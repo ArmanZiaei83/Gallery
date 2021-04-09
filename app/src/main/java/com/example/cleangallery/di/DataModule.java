@@ -1,6 +1,7 @@
 package com.example.cleangallery.di;
 
 import com.example.cleangallery.data.remote.RetrofitHolder;
+import com.example.cleangallery.domain.DataAccessor;
 
 import javax.inject.Singleton;
 
@@ -14,5 +15,11 @@ public class DataModule {
     @Provides
     RetrofitHolder retrofitHolder(){
         return new RetrofitHolder();
+    }
+
+    @Singleton
+    @Provides
+    DataAccessor provideAccessor(){
+        return new DataAccessor();
     }
 }

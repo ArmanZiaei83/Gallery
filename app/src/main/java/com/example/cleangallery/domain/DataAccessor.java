@@ -33,29 +33,7 @@ public class DataAccessor {
         .observeOn(AndroidSchedulers.mainThread());
     }
 
-    public void subscribeData(){
-        getAllData().subscribe(new Observer<List<RetrofitModel>>() {
-            @Override
-            public void onSubscribe(@NotNull Disposable d) {
-
-            }
-
-            @Override
-            public void onNext(@NotNull List<RetrofitModel> retrofitModels) {
-                for (int i = 0; i < retrofitModels.size() ; i++) {
-                    System.out.println("Data Url : " + retrofitModels.get(i).getUrl());
-                }
-            }
-
-            @Override
-            public void onError(@NotNull Throwable e) {
-                System.out.println("Error : " + e.getMessage());
-            }
-
-            @Override
-            public void onComplete() {
-
-            }
-        });
+    @Inject
+    public DataAccessor() {
     }
 }

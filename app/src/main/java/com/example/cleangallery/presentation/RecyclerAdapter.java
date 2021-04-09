@@ -1,11 +1,14 @@
 package com.example.cleangallery.presentation;
 
 import android.content.Context;
+import android.content.Intent;
+import android.os.Handler;
 import android.view.Display;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -20,6 +23,7 @@ import com.example.cleangallery.data.models.RetrofitModel;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 import retrofit2.Retrofit;
@@ -48,6 +52,17 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.MyView
         Glide.with(context).load(url).into(holder.picture);
 
         holder.title.setText("Title : " + retrofitModel.getTitle());
+
+        new Handler().postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                if (holder.picture.getDrawable() == null){
+                    holder.bar.setVisibility(View.VISIBLE);
+                }else {
+                    holder.bar.setVisibility(View.GONE);
+                }
+            }
+        } , 1000);
     }
 
     @Override
@@ -58,9 +73,11 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.MyView
     public class MyViewHodler extends RecyclerView.ViewHolder {
         ImageView picture;
         TextView title;
+        ProgressBar bar;
         public MyViewHodler(@NonNull @NotNull View itemView) {
             super(itemView);
 
+            bar = itemView.findViewById(R.id.progressBar);
             picture = itemView.findViewById(R.id.picture);
             title = itemView.findViewById(R.id.pic_title);
         }
