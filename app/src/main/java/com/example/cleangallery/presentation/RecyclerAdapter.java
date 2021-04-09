@@ -15,6 +15,7 @@ import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.model.GlideUrl;
 import com.bumptech.glide.load.model.LazyHeaders;
 import com.example.cleangallery.R;
+import com.example.cleangallery.data.models.RetrofitModel;
 
 import org.jetbrains.annotations.NotNull;
 
